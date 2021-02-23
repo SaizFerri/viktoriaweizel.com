@@ -19,7 +19,7 @@ const GALLERIES_QUERY = gql`
 `;
 
 const GalleryPage: React.FC = () => {
-  const { loading, error, data } = useQuery(GALLERIES_QUERY);
+  const { data } = useQuery(GALLERIES_QUERY);
 
   return (
     <div>

@@ -1,6 +1,4 @@
 import React from 'react';
-import NextImage from 'next/image';
-import { useQuery, gql } from '@apollo/client';
 
 interface IImage {
   id: string;

@@ -40,7 +40,7 @@ const GALLERY_QUERY = gql`
 
 const GalleryItemPage: React.FC = () => {
   const router = useRouter();
-  const { loading, error, data } = useQuery(GALLERY_QUERY, {
+  const { error, data } = useQuery(GALLERY_QUERY, {
     variables: { slug: router.query.slug },
   });
 

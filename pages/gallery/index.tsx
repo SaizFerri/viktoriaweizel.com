@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { gql, useQuery } from '@apollo/client';
 import { initializeApollo, addApolloState } from '../../lib/apolloClient';
 
@@ -37,7 +37,7 @@ const GalleryPage: React.FC = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
@@ -46,7 +46,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return addApolloState(apolloClient, {
     props: {},
-    revalidate: 60,
   });
 };
 

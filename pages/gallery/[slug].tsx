@@ -1,20 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetServerSideProps } from 'next';
 import { gql, useQuery } from '@apollo/client';
 import { initializeApollo, addApolloState } from '../../lib/apolloClient';
 import { useRouter } from 'next/router';
 import CMSImage from '../../components/CMSImage';
 
-const GALLERIES_ID_QUERY = gql`
-  query {
-    items {
-      gallery {
-        slug
-      }
-    }
-  }
-`;
+// const GALLERIES_ID_QUERY = gql`
+//   query {
+//     items {
+//       gallery {
+//         slug
+//       }
+//     }
+//   }
+// `;
 
 const GALLERY_QUERY = gql`
   query($slug: String) {
@@ -63,21 +63,21 @@ const GalleryItemPage: React.FC = () => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const apolloClient = initializeApollo();
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const apolloClient = initializeApollo();
 
-  const { data } = await apolloClient.query({
-    query: GALLERIES_ID_QUERY,
-  });
+//   const { data } = await apolloClient.query({
+//     query: GALLERIES_ID_QUERY,
+//   });
 
-  const paths = data.items.gallery.map(({ slug }: any) => ({
-    params: { slug },
-  }));
+//   const paths = data.items.gallery.map(({ slug }: any) => ({
+//     params: { slug },
+//   }));
 
-  return { paths, fallback: false };
-};
+//   return { paths, fallback: false };
+// };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
@@ -86,7 +86,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
   return addApolloState(apolloClient, {
     props: {},
-    revalidate: 60,
   });
 };
 

@@ -1,17 +1,22 @@
-import React from 'react';
-import Link from 'next/link';
-import { GetServerSideProps } from 'next';
-import { gql, useQuery } from '@apollo/client';
-import { initializeApollo, addApolloState } from '../../lib/apolloClient';
+import React from "react";
+import { GetServerSideProps } from "next";
+import Head from "next/head";
+import { gql, useQuery } from "@apollo/client";
+import { initializeApollo, addApolloState } from "../../lib/apolloClient";
+import GalleryList from "../../components/gallery/GalleryList";
+import Layout from "../../components/Layout";
 
 const GALLERIES_QUERY = gql`
   query {
     items {
-      gallery {
+      gallery(sort: "-date_created") {
+        id
         name
         slug
         thumbnail {
           id
+          width
+          height
         }
       }
     }
@@ -21,19 +26,18 @@ const GALLERIES_QUERY = gql`
 const GalleryPage: React.FC = () => {
   const { data } = useQuery(GALLERIES_QUERY);
 
+  const head = () => (
+    <Head>
+      <title>Gallery</title>
+    </Head>
+  );
+
   return (
-    <div>
-      <h1>Gallery page</h1>
-      <ul>
-        {(data?.items.gallery || []).map(({ slug, name }) => (
-          <li key={name}>
-            <Link href={`/gallery/${encodeURIComponent(slug)}`}>
-              <a>{name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Layout head={head}>
+      <div className="container">
+        <GalleryList items={data?.items?.gallery} />
+      </div>
+    </Layout>
   );
 };
 

@@ -1,0 +1,31 @@
+.gallery-list {
+  &__item {
+    position: relative;
+
+    img {
+      transition: all 200ms ease-in;
+    }
+
+    &-title {
+      position: absolute;
+      color: #fff;
+      bottom: 1rem;
+      right: 1rem;
+      line-height: 1;
+      font-weight: 700;
+      transition: all 200ms ease-in;
+      margin-left: 18px;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+
+      .gallery-list__item-title {
+        //transform: translateY(-10px);
+        letter-spacing: 10px;
+      }
+    }
+  }
+}

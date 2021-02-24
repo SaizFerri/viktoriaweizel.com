@@ -1,20 +1,13 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { gql, useQuery } from '@apollo/client';
 import { initializeApollo, addApolloState } from '../../lib/apolloClient';
 import { useRouter } from 'next/router';
-import CMSImage from '../../components/CMSImage';
-
-// const GALLERIES_ID_QUERY = gql`
-//   query {
-//     items {
-//       gallery {
-//         slug
-//       }
-//     }
-//   }
-// `;
+import Layout from '../../components/Layout';
+import Masonry from '../../components/Masonry';
+import SimpleReactLightbox from 'simple-react-lightbox';
 
 const GALLERY_QUERY = gql`
   query($slug: String) {
@@ -26,10 +19,15 @@ const GALLERY_QUERY = gql`
         slug
         thumbnail {
           id
+          width
+          height
         }
         images {
-          directus_files_id {
+          image {
             id
+            title
+            width
+            height
           }
         }
         tags
@@ -38,7 +36,7 @@ const GALLERY_QUERY = gql`
   }
 `;
 
-const GalleryItemPage: React.FC = () => {
+const GalleryItemPage: FunctionComponent = () => {
   const router = useRouter();
   const { error, data } = useQuery(GALLERY_QUERY, {
     variables: { slug: router.query.slug },
@@ -51,31 +49,28 @@ const GalleryItemPage: React.FC = () => {
 
   const [item] = data?.items?.gallery;
 
+  const head: FunctionComponent = () => (
+    <Head>
+      <title>{item.name}</title>
+      <meta name="description" content={item.description} />
+    </Head>
+  );
+
   return (
-    <div>
-      <Link href="/gallery">
-        <a>Go back</a>
-      </Link>
-      <h1>{item.name}</h1>
-      <p>{item.description}</p>
-      <CMSImage id={item.thumbnail.id} alt={item.name} />
-    </div>
+    <SimpleReactLightbox>
+      <Layout head={head}>
+        <div className="container">
+          <Link href="/gallery">
+            <a>Go back</a>
+          </Link>
+          <h1>{item.name}</h1>
+          <p>{item.description}</p>
+          <Masonry items={item.images.map(({ image }) => image)} />
+        </div>
+      </Layout>
+    </SimpleReactLightbox>
   );
 };
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const apolloClient = initializeApollo();
-
-//   const { data } = await apolloClient.query({
-//     query: GALLERIES_ID_QUERY,
-//   });
-
-//   const paths = data.items.gallery.map(({ slug }: any) => ({
-//     params: { slug },
-//   }));
-
-//   return { paths, fallback: false };
-// };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const apolloClient = initializeApollo();

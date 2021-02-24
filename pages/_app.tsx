@@ -2,6 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '../lib/apolloClient';
 import type { AppProps } from 'next/app';
 import '../styles/index.scss';
+import 'bootstrap/scss/bootstrap-grid.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps);

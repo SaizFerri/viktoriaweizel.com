@@ -1,2 +1,6 @@
-@import 'settings/index';
-@import 'elements/index';
+@import "bootstrap/scss/bootstrap-grid.scss";
+
+@import "settings/index";
+@import "elements/index";
+@import "components/index";
+@import "utils/index";

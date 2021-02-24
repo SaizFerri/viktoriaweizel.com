@@ -2,43 +2,17 @@ import React, { FunctionComponent } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import Masonry from "../../components/Masonry";
 import Image from "../../components/Image";
-
-const GALLERY_QUERY = gql`
-  query($slug: String) {
-    items {
-      gallery(filter: { slug: { _eq: $slug } }) {
-        id
-        name
-        description
-        slug
-        thumbnail {
-          id
-          width
-          height
-        }
-        images {
-          image {
-            id
-            title
-            width
-            height
-          }
-        }
-        tags
-      }
-    }
-  }
-`;
+import GET_GALLERY_BY_SLUG from "../../graphql/queries/gallery/getGalleryBySlug.gql";
 
 const GalleryItemPage: FunctionComponent = () => {
   const router = useRouter();
-  const { error, data } = useQuery(GALLERY_QUERY, {
+  const { error, data } = useQuery(GET_GALLERY_BY_SLUG, {
     variables: { slug: router.query.slug },
   });
 
@@ -70,7 +44,7 @@ const GalleryItemPage: FunctionComponent = () => {
               key={image.id}
               image={image}
               alt={image.title}
-              classNames="cursor-pointer"
+              classNames="cursor-pointer bg-color-grey"
             />
           ))}
         </Masonry>
@@ -83,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: GALLERY_QUERY,
+    query: GET_GALLERY_BY_SLUG,
     variables: { slug: params?.slug },
   });
   return addApolloState(apolloClient, {

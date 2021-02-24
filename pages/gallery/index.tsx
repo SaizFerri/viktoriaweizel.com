@@ -1,30 +1,14 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import GalleryList from "../../components/gallery/GalleryList";
 import Layout from "../../components/Layout";
-
-const GALLERIES_QUERY = gql`
-  query {
-    items {
-      gallery(sort: "-date_created") {
-        id
-        name
-        slug
-        thumbnail {
-          id
-          width
-          height
-        }
-      }
-    }
-  }
-`;
+import GET_ALL_GALLERIES from "../../graphql/queries/gallery/getAllGalleries.gql";
 
 const GalleryPage: React.FC = () => {
-  const { data } = useQuery(GALLERIES_QUERY);
+  const { data } = useQuery(GET_ALL_GALLERIES);
 
   const head = () => (
     <Head>
@@ -45,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: GALLERIES_QUERY,
+    query: GET_ALL_GALLERIES,
   });
 
   return addApolloState(apolloClient, {

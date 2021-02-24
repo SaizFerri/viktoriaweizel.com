@@ -1,4 +1,6 @@
 .gallery-list {
+  margin-top: 2rem;
+
   &__item {
     position: relative;
 
@@ -23,7 +25,6 @@
       }
 
       .gallery-list__item-title {
-        //transform: translateY(-10px);
         letter-spacing: 10px;
       }
     }

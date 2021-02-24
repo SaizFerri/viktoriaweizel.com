@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    height: 250px;
+  }
+
+  &__image {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__body {
+    margin: 2rem 0 0 0;
+    padding: 0 1rem;
+  }
+
+  &__footer {
+    margin: 0 0 2rem 0;
+    padding: 0 1rem;
+  }
+
+  &__title {
+    line-height: 1;
+  }
+}

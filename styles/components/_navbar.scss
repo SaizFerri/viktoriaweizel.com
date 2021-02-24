@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0.75rem;
+    border-bottom: 1px solid #000;
   }
 
   &__logo {
@@ -19,14 +20,6 @@
 
       &:last-child {
         margin-right: 0;
-      }
-
-      a {
-        color: #000;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
   }

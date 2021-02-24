@@ -1,4 +1,9 @@
 a {
   display: block;
   text-decoration: none;
+  color: #000000;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

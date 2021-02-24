@@ -7,13 +7,15 @@ import isEqual from 'lodash/isEqual';
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
+
 const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_URL || process.env.DIRECTUS_URL;
+const DIRECTUS_TOKEN = process.env.DIRECTUS_TOKEN;
 
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: new HttpLink({
-      uri: `${DIRECTUS_URL}/graphql`, // Server URL (must be absolute)
+      uri: `${DIRECTUS_URL}/graphql?access_token=${DIRECTUS_TOKEN}`, // Server URL (must be absolute)
     }),
     cache: new InMemoryCache({
       typePolicies: {

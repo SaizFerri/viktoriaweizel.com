@@ -1,13 +1,11 @@
-import React, { FunctionComponent } from 'react';
-import NextImage from 'next/image';
-
+import React, { FunctionComponent } from "react";
+import NextImage from "next/image";
+import DIRECTUS_URL from "../consts/directusBaseUrl";
 interface IImageProps {
   image: Record<string, any>;
   alt: string;
   classNames?: string;
 }
-
-const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_URL;
 
 const Image: FunctionComponent<IImageProps> = ({ image, alt, classNames }) => {
   return (

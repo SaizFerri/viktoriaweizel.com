@@ -1,0 +1,14 @@
+query getAllGalleries {
+  items {
+    gallery(sort: "-date_created") {
+      id
+      name
+      slug
+      thumbnail {
+        id
+        width
+        height
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+query getAllPosts($status: [String]) {
+  items {
+    posts(sort: "-date_created", filter: { status: { _in: $status } }) {
+      id
+      title
+      subtitle
+      date_created
+      thumbnail {
+        id
+        width
+        height
+      }
+    }
+  }
+}

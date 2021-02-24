@@ -1,0 +1,33 @@
+.navbar {
+  &__content {
+    @extend .container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.75rem;
+  }
+
+  &__logo {
+    max-width: 50px;
+  }
+
+  &__menu {
+    display: flex;
+
+    &-item {
+      margin: 0 0.5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        color: #000;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

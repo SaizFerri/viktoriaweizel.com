@@ -1,4 +1,6 @@
-import React, { FunctionComponent, ReactChild } from 'react';
+import React, { FunctionComponent, ReactChild } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 interface ILayoutProps {
   head: FunctionComponent;
@@ -11,10 +13,10 @@ const Layout: FunctionComponent<ILayoutProps> = ({ head, children }) => {
     <>
       <Head />
       <header>
-        <nav>Navigation</nav>
+        <Navbar />
       </header>
       <main>{children}</main>
-      <footer>Footer</footer>
+      <Footer />
     </>
   );
 };

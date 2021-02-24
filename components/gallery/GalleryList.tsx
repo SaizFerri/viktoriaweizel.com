@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import GalleryListItem from './GalleryListItem';
-import IGalleryItem from '../../interfaces/galleryItem.interface';
-import Masonry from '../Masonry';
+import React, { FunctionComponent } from "react";
+import GalleryListItem from "./GalleryListItem";
+import IGalleryItem from "../../interfaces/galleryItem.interface";
+import Masonry from "../Masonry";
 
 interface IGalleryListProps {
   items: IGalleryItem[];
@@ -13,7 +13,7 @@ const GalleryList: FunctionComponent<IGalleryListProps> = ({ items }) => {
   }
 
   return (
-    <Masonry>
+    <Masonry classNames="gallery-list">
       {items.map((item) => (
         <GalleryListItem key={item.slug} item={item} />
       ))}

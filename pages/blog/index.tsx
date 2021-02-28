@@ -23,12 +23,12 @@ const BlogPage: FunctionComponent = () => {
 
   return (
     <Layout head={head}>
-      <div className="container mt-4">
+      <div className="container">
         <div className="row">
           {(data?.items?.posts || []).map(
             ({ id, title, subtitle, date_created, thumbnail, slug }) => {
               return (
-                <div className="col-lg-4" key={id}>
+                <div className="col-12 col-md-6 col-lg-6 col-xl-4" key={id}>
                   <BlogCard
                     title={title}
                     createdOn={date_created}

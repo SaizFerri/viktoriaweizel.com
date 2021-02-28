@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from "react";
-import Link from "next/link";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 import { useQuery } from "@apollo/client";
-import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import { useRouter } from "next/router";
+import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import Layout from "../../components/Layout";
 import Masonry from "../../components/Masonry";
 import Image from "../../components/Image";
@@ -33,21 +32,20 @@ const GalleryItemPage: FunctionComponent = () => {
   return (
     <Layout head={head}>
       <div className="container">
-        <Link href="/gallery">
-          <a>Go back</a>
-        </Link>
-        <h1>{item.name}</h1>
-        <p>{item.description}</p>
-        <Masonry withLightbox>
-          {(item.images || []).map(({ image }) => (
-            <Image
-              key={image.id}
-              image={image}
-              alt={image.title}
-              classNames="cursor-pointer bg-color-grey"
-            />
-          ))}
-        </Masonry>
+        <div className="gallery-page">
+          <h1 className="gallery-page__title">{item.name}</h1>
+          <p className="gallery-page__description">{item.description}</p>
+          <Masonry withLightbox>
+            {(item.images || []).map(({ image }) => (
+              <Image
+                key={image.id}
+                image={image}
+                alt={image?.title || "Gallery image"}
+                classNames="cursor-pointer bg-color-grey"
+              />
+            ))}
+          </Masonry>
+        </div>
       </div>
     </Layout>
   );

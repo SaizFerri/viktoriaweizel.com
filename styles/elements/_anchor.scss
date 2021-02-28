@@ -1,9 +1,15 @@
 a {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   color: #000000;
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+a.clean {
+  &:hover {
+    text-decoration: none;
   }
 }

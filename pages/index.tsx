@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/Layout";
 
 const IndexPage = () => {
@@ -10,30 +10,31 @@ const IndexPage = () => {
   );
   return (
     <Layout head={head}>
-      <h1>Viktoria Weizel</h1>
-      <p>
-        <Link href="/gallery">
-          <a>Gallery</a>
-        </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-      </p>
+      <div className="container">
+        <h1>Viktoria Weizel</h1>
+        <p>
+          Check out my
+          <Link href="/gallery">
+            <a> gallery</a>
+          </Link>
+        </p>
+      </div>
     </Layout>
   );
 };
 
-// export async function getStaticProps() {
-//   const apolloClient = initializeApollo();
+export async function getStaticProps() {
+  // const apolloClient = initializeApollo();
 
-//   await apolloClient.query({
-//     query: GALLERY_QUERY,
-//   });
+  // await apolloClient.query({
+  //   query: GALLERY_QUERY,
+  // });
 
-//   return addApolloState(apolloClient, {
-//     props: {},
-//     revalidate: 60,
-//   });
-// }
+  // return addApolloState(apolloClient, {
+  //   props: {},
+  //   revalidate: 60,
+  // });
+  return { props: {} };
+}
 
 export default IndexPage;

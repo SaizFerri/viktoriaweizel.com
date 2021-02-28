@@ -1,3 +1,10 @@
-$heading-font-family: 'Old Standard TT', serif;
-$text-font-family: 'Open Sans', sans-serif;
-$base-font-size: 18px;
+$heading-font-family: "Old Standard TT", serif;
+$text-font-family: "Open Sans", sans-serif;
+$font-sizes: (
+  "xlarge": 28px,
+  "large": 23px,
+  "medium": 21px,
+  "base": 18px,
+  "small": 14px,
+  "xsmall": 12px,
+);

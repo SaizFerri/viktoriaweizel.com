@@ -1,4 +1,7 @@
 import React, { FunctionComponent } from "react";
+import Link from "next/link";
+import { format } from "date-fns";
+import { de } from "date-fns/locale";
 import Card from "../cards/Card";
 
 interface IBlogCardProps {
@@ -14,23 +17,42 @@ const BlogCard: FunctionComponent<IBlogCardProps> = ({
   title,
   createdOn,
   subtitle,
+  slug,
 }) => {
-  const CardBody = () => (
-    <>
-      <h4 className="card__title">{title}</h4>
-      <small>{createdOn}</small>
-      <p>{subtitle}</p>
-    </>
-  );
+  const CardBody = () => {
+    const formatedDate = format(new Date(createdOn), "dd MMMM yyyy", {
+      locale: de,
+    });
+    return (
+      <>
+        <div className="blog-card__title">
+          <Link href={`/blog/${slug}`}>
+            <a className="clean d-block">
+              <h3 className="card__title">{title}</h3>
+            </a>
+          </Link>
+          <small className="blog-card__date">{formatedDate}</small>
+        </div>
+        <p className="card__teaser">{subtitle}</p>
+      </>
+    );
+  };
 
   const CardFooter = () => (
     <>
-      <button>Read more</button>
+      <Link href={`/blog/${slug}`}>
+        <a className="button">Read more</a>
+      </Link>
     </>
   );
 
   return (
-    <Card thumbnail={thumbnail} body={<CardBody />} footer={<CardFooter />} />
+    <Card
+      classNames="blog-card"
+      thumbnail={thumbnail}
+      body={<CardBody />}
+      footer={<CardFooter />}
+    />
   );
 };
 

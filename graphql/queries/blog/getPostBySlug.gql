@@ -1,16 +1,17 @@
-query getAllPosts($status: [String]) {
+query getPostBySlug($slug: String) {
   items {
-    posts(sort: "-date_created", filter: { status: { _in: $status } }) {
+    posts(filter: { slug: { _eq: $slug } }) {
       id
       title
       subtitle
       date_created
-      slug
       thumbnail {
         id
         width
         height
       }
+      body
+      tags
     }
   }
 }

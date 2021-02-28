@@ -1,2 +1,65 @@
 .wysiwyg {
+  h1 {
+    margin-bottom: to-rem(27);
+  }
+
+  h2 {
+    margin-bottom: to-rem(21);
+  }
+
+  h3 {
+    margin-bottom: to-rem(21);
+  }
+
+  h4 {
+    margin-bottom: to-rem(14);
+  }
+
+  div,
+  p,
+  ul,
+  ol,
+  .wysiwyg-image {
+    margin-top: 2em;
+  }
+
+  ul {
+    list-style: disc;
+
+    li {
+      margin-left: to-rem(32);
+
+      ul {
+        margin-top: 0;
+        list-style: circle;
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal;
+
+    li {
+      margin-left: to-rem(32);
+    }
+  }
+
+  a {
+    color: $primary;
+  }
+
+  .wysiwyg-iframe {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

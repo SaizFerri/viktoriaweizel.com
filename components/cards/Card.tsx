@@ -2,14 +2,20 @@ import React, { FunctionComponent } from "react";
 import DIRECTUS_URL from "../../consts/directusBaseUrl";
 
 interface ICardProps {
+  classNames: string;
   thumbnail: Record<string, string | number>;
   body: JSX.Element;
   footer: JSX.Element;
 }
 
-const Card: FunctionComponent<ICardProps> = ({ thumbnail, body, footer }) => {
+const Card: FunctionComponent<ICardProps> = ({
+  classNames = "",
+  thumbnail,
+  body,
+  footer,
+}) => {
   return (
-    <article className="card">
+    <article className={`card ${classNames}`}>
       <div className="card__header">
         <div
           className="card__image"

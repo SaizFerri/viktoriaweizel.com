@@ -1,9 +1,9 @@
-button {
+.button {
+  display: inline-block;
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.5;
   margin: 0;
-  display: inline-block;
   text-transform: none;
   appearance: none;
   border: none;
@@ -13,13 +13,7 @@ button {
   transition: all 200ms ease;
 
   &:hover {
+    text-decoration: none;
     background-color: rgba($primary, 0.9);
   }
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
 }

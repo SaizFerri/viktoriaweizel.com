@@ -1,0 +1,9 @@
+.blog-card {
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__date {
+    color: $dark-grey;
+  }
+}

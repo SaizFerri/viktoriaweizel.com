@@ -1,0 +1,7 @@
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function to-rem($value, $base-value: map-get($font-sizes, "base")) {
+  @return strip-unit($value) / strip-unit($base-value) * 1rem;
+}

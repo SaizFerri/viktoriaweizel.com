@@ -1,4 +1,4 @@
-import React from "react";
+import { FunctionComponent } from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useQuery } from "@apollo/client";
@@ -12,7 +12,7 @@ const variables = {
   status: COLLECTION_STATUS,
 };
 
-const GalleryPage: React.FC = () => {
+const GalleryPage: FunctionComponent = () => {
   const { data } = useQuery(GET_ALL_GALLERIES, { variables });
 
   const head = () => (

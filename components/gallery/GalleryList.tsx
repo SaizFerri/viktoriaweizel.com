@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import GalleryListItem from "./GalleryListItem";
 import IGalleryItem from "../../interfaces/galleryItem.interface";
 import Masonry from "../Masonry";

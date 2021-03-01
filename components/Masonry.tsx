@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactChild } from "react";
+import { FunctionComponent, ReactChild } from "react";
 import ReactMasonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import SimpleReactLightbox from "simple-react-lightbox";
 import { SRLWrapper } from "simple-react-lightbox";

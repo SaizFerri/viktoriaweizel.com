@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 const IndexPage = () => {
   const head = () => (
     <Head>
-      <title>Viktoria Weizel</title>
+      <title>Viktoria Weizel GH Action</title>
     </Head>
   );
   return (

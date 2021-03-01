@@ -48,6 +48,20 @@
     color: $primary;
   }
 
+  .wysiwyg-image {
+    text-align: center;
+
+    figcaption {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: map-get($font-sizes, "small");
+
+      * {
+        font-size: inherit;
+      }
+    }
+  }
+
   .wysiwyg-iframe {
     position: relative;
     width: 100%;

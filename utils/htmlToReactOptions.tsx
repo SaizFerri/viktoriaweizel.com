@@ -25,9 +25,10 @@ const htmlToReactOptions = {
 
 const replaceNativeImgWithNextImg = ({ src, alt, width, height }) => {
   return (
-    <div className="wysiwyg-image">
+    <figure className="wysiwyg-image">
       <Image url={src} alt={alt} image={{ width: width, height: height }} />
-    </div>
+      <figcaption dangerouslySetInnerHTML={{ __html: alt }}></figcaption>
+    </figure>
   );
 };
 

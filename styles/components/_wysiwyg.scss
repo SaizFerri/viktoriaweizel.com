@@ -1,20 +1,19 @@
 .wysiwyg {
   h1 {
-    margin-bottom: to-rem(27);
+    margin: to-rem(27) 0;
   }
 
-  h2 {
-    margin-bottom: to-rem(21);
-  }
-
+  h2,
   h3 {
-    margin-bottom: to-rem(21);
+    margin: to-rem(21) 0;
   }
 
   h4 {
-    margin-bottom: to-rem(14);
+    margin: to-rem(14) 0;
   }
 
+  h3,
+  h4,
   div,
   p,
   ul,

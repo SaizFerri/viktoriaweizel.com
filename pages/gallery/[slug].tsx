@@ -36,14 +36,16 @@ const GalleryItemPage: FunctionComponent = () => {
           <h1 className="gallery-page__title">{item.name}</h1>
           <p className="gallery-page__description">{item.description}</p>
           <Masonry withLightbox>
-            {(item.images || []).map(({ image }) => (
-              <Image
-                key={image.id}
-                image={image}
-                alt={image?.title || "Gallery image"}
-                classNames="cursor-pointer bg-color-grey"
-              />
-            ))}
+            {(item.images || [])
+              .filter(({ image }) => image !== null)
+              .map(({ image }) => (
+                <Image
+                  key={image.id}
+                  image={image}
+                  alt={image?.title || "Gallery image"}
+                  classNames="cursor-pointer bg-color-grey"
+                />
+              ))}
           </Masonry>
         </div>
       </div>

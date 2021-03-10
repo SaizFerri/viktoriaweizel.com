@@ -10,7 +10,7 @@ query getGalleryBySlug($slug: String) {
         width
         height
       }
-      images {
+      images(filter: { image: { id: { _nnull: true } } }) {
         image {
           id
           title

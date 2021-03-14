@@ -6,7 +6,8 @@ import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import GalleryList from "../../components/gallery/GalleryList";
 import Layout from "../../components/Layout";
 import GET_ALL_GALLERIES from "../../graphql/queries/gallery/getAllGalleries.gql";
-import COLLECTION_STATUS from '../../consts/collectionStatus';
+import COLLECTION_STATUS from "../../consts/collectionStatus";
+import SEO from "../../components/SEO";
 
 const variables = {
   status: COLLECTION_STATUS,
@@ -15,9 +16,15 @@ const variables = {
 const GalleryPage: FunctionComponent = () => {
   const { data } = useQuery(GET_ALL_GALLERIES, { variables });
 
+  const seoItem = {
+    title: "Gallery",
+    description: "Welcome to my gallery!",
+  };
+
   const head = () => (
     <Head>
-      <title>Gallery</title>
+      <title>{seoItem.title}</title>
+      <SEO item={seoItem} type="website" url="/gallery" />
     </Head>
   );
 

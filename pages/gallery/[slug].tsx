@@ -28,14 +28,23 @@ const GalleryItemPage: FunctionComponent = () => {
   const head: FunctionComponent = () => (
     <Head>
       <title>{item.name}</title>
+      <meta name="author" content="Viktoria Weizel" />
       <meta name="description" content={item.description} />
+      <meta itemProp="name" content={item.name} />
+      <meta itemProp="description" content={item.description} />
+      <meta
+        itemProp="image"
+        content={`${DIRECTUS_URL}/assets/${item.thumbnail.id}`}
+      />
       <meta property="og:title" content={item.name} />
+      <meta property="og:site_name" content={item.name}></meta>
       <meta property="og:description" content={item.description} />
       {item.tags.length && (
         <meta name="keywords" content={item.tags.join(", ")} />
       )}
       <meta
         property="og:image"
+        itemProp="image"
         content={`${DIRECTUS_URL}/assets/${item.thumbnail.id}`}
       />
       <meta property="og:image:width" content={item.thumbnail.width} />

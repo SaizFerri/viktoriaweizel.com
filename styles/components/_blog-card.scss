@@ -3,6 +3,16 @@
     margin-bottom: 1rem;
   }
 
+  .card__image {
+    img {
+      transition: all 200ms ease-in;
+    }
+
+    img:hover {
+      transform: scale(1.1);
+    }
+  }
+
   &__date {
     color: $dark-grey;
   }

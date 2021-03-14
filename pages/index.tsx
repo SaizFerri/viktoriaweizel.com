@@ -1,11 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import SEO from "../components/SEO";
 
 const IndexPage = () => {
+  const seoItem = {
+    title: "Viktoria Weizel – Travel, Photography & Lifestyle",
+    description:
+      "I'm Viktoria Weizel a photographer/nurse/traveler based in Berlin. On this website you can get a glimpse of my travels and life in Berlin through galleries and blog posts. Follow me on instagram @viktoria_weizel",
+  };
+
   const head = () => (
     <Head>
-      <title>Viktoria Weizel</title>
+      <title>{seoItem.title}</title>
+      <SEO item={seoItem} type="website" url="/" />
     </Head>
   );
   return (

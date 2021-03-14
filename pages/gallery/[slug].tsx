@@ -8,8 +8,7 @@ import Layout from "../../components/Layout";
 import Masonry from "../../components/Masonry";
 import Image from "../../components/Image";
 import GET_GALLERY_BY_SLUG from "../../graphql/queries/gallery/getGalleryBySlug.gql";
-import DIRECTUS_URL from "../../consts/directusBaseUrl";
-import APP_URL from "../../consts/appUrl";
+import SEO from "../../components/SEO";
 
 const GalleryItemPage: FunctionComponent = () => {
   const router = useRouter();
@@ -23,34 +22,21 @@ const GalleryItemPage: FunctionComponent = () => {
   }
 
   const [item] = data?.items?.gallery;
-  console.log(item);
+  const seoItem = {
+    title: item.name,
+    description: item.description,
+    tags: item.tags,
+  };
 
   const head: FunctionComponent = () => (
     <Head>
       <title>{item.name}</title>
-      <meta name="author" content="Viktoria Weizel" />
-      <meta name="description" content={item.description} />
-      <meta itemProp="name" content={item.name} />
-      <meta itemProp="description" content={item.description} />
-      <meta
-        itemProp="image"
-        content={`${DIRECTUS_URL}/assets/${item.thumbnail.id}`}
+      <SEO
+        item={seoItem}
+        thumbnail={item.thumbnail}
+        type="article"
+        url={`/gallery/${item.slug}`}
       />
-      <meta property="og:title" content={item.name} />
-      <meta property="og:site_name" content={item.name}></meta>
-      <meta property="og:description" content={item.description} />
-      {item.tags.length && (
-        <meta name="keywords" content={item.tags.join(", ")} />
-      )}
-      <meta
-        property="og:image"
-        itemProp="image"
-        content={`${DIRECTUS_URL}/assets/${item.thumbnail.id}`}
-      />
-      <meta property="og:image:width" content={item.thumbnail.width} />
-      <meta property="og:image:height" content={item.thumbnail.height} />
-      <meta property="og:url" content={`${APP_URL}/gallery/${item.slug}`} />
-      <meta property="og:type" content="article" />
     </Head>
   );
 

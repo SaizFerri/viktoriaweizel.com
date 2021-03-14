@@ -1,0 +1,43 @@
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  background-color: #ececec;
+  padding: 1rem;
+
+  .react-cookie-law-container {
+    @extend .container;
+  }
+
+  .react-cookie-law-msg {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .react-cookie-law-msg,
+  .react-cookie-law-policy {
+    font-size: map-get($font-sizes, "small");
+  }
+
+  .react-cookie-law-button-wrapper {
+    display: flex;
+    margin-top: 1rem;
+  }
+
+  .react-cookie-law-save-btn,
+  .react-cookie-law-manage-btn,
+  .react-cookie-law-accept-btn {
+    span {
+      font-size: map-get($font-sizes, "small");
+    }
+  }
+
+  .react-cookie-law-save-btn,
+  .react-cookie-law-manage-btn {
+    margin-right: 0.5rem;
+    background-color: $white;
+    color: $primary;
+  }
+}

@@ -7,6 +7,7 @@ import GET_ALL_POSTS from "../../graphql/queries/blog/getAllPosts.gql";
 import { useQuery } from "@apollo/client";
 import COLLECTION_STATUS from "../../consts/collectionStatus";
 import BlogCard from "../../components/blog/BlogCard";
+import SEO from "../../components/SEO";
 
 const variables = {
   status: COLLECTION_STATUS,
@@ -15,9 +16,15 @@ const variables = {
 const BlogPage: FunctionComponent = () => {
   const { data } = useQuery(GET_ALL_POSTS, { variables });
 
+  const seoItem = {
+    title: "Blog",
+    description: "Welcome to my blog!",
+  };
+
   const head = () => (
     <Head>
-      <title>Blog</title>
+      <title>{seoItem.title}</title>
+      <SEO item={seoItem} type="website" url="/blog" />
     </Head>
   );
 

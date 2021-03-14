@@ -22,10 +22,19 @@ const BlogDetailPage: FunctionComponent = () => {
   const head = () => (
     <Head>
       <title>{post.title}</title>
+      <meta name="author" content="Viktoria Weizel" />
+      <meta itemProp="name" content={post.name} />
+      <meta itemProp="description" content={post.description} />
+      <meta
+        itemProp="image"
+        content={`${DIRECTUS_URL}/assets/${post.thumbnail.id}`}
+      />
       <meta property="og:title" content={post.title} />
+      <meta property="og:site_name" content={post.title}></meta>
       <meta property="og:description" content={post.subtitle} />
       <meta
         property="og:image"
+        itemProp="image"
         content={`${DIRECTUS_URL}/assets/${post.thumbnail.id}`}
       />
       <meta property="og:image:width" content={post.thumbnail.width} />

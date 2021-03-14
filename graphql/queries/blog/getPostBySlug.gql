@@ -2,6 +2,7 @@ query getPostBySlug($slug: String) {
   items {
     posts(filter: { slug: { _eq: $slug } }) {
       id
+      slug
       title
       subtitle
       date_created

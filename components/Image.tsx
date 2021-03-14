@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import NextImage from "next/image";
 import DIRECTUS_URL from "../consts/directusBaseUrl";
 interface IImageProps {

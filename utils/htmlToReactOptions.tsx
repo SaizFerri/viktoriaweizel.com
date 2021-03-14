@@ -1,8 +1,39 @@
 import Image from "../components/Image";
 import { domToReact } from "html-react-parser";
 
+const headings = ["h1", "h2", "h3", "h4", "h5"];
+
+// \separator = 3 dots
+
 const htmlToReactOptions = {
   replace: (node) => {
+    if (
+      node.type === "tag" &&
+      node.children.length > 0 &&
+      node.children[0].data === "\\separator"
+    ) {
+      console.log(node);
+      return (
+        <div className="separator">
+          <span className="separator__item"></span>
+          <span className="separator__item"></span>
+          <span className="separator__item"></span>
+        </div>
+      );
+    }
+
+    if (node.type === "tag" && node.tagName === "p") {
+      if (headings.includes(node.previousSibling?.previousSibling?.name)) {
+        return <p className="p-leading">{domToReact(node.children)}</p>;
+      }
+    }
+
+    if (node.type === "tag" && node.tagName === "h3") {
+      if (["h1", "h2"].includes(node.previousSibling?.previousSibling?.name)) {
+        return <h3 className="h-leading">{domToReact(node.children)}</h3>;
+      }
+    }
+
     if (node.children && node.children.length === 1) {
       if (node.children[0].name === "img") {
         const { attribs } = node.children[0];
@@ -25,9 +56,10 @@ const htmlToReactOptions = {
 
 const replaceNativeImgWithNextImg = ({ src, alt, width, height }) => {
   return (
-    <div className="wysiwyg-image">
+    <figure className="wysiwyg-image">
       <Image url={src} alt={alt} image={{ width: width, height: height }} />
-    </div>
+      <figcaption dangerouslySetInnerHTML={{ __html: alt }}></figcaption>
+    </figure>
   );
 };
 

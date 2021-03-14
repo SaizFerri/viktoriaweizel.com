@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 const IndexPage = () => {
   const head = () => (
     <Head>
-      <title>Viktoria Weizel GH Action</title>
+      <title>Viktoria Weizel</title>
     </Head>
   );
   return (
@@ -13,9 +13,13 @@ const IndexPage = () => {
       <div className="container">
         <h1>Viktoria Weizel</h1>
         <p>
-          Check out my
+          Check out my&nbsp;
           <Link href="/gallery">
-            <a> gallery</a>
+            <a>gallery&nbsp;</a>
+          </Link>
+          and my&nbsp;
+          <Link href="/blog">
+            <a>blog</a>
           </Link>
         </p>
       </div>

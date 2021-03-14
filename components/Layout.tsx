@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactChild } from "react";
+import { FunctionComponent, ReactChild } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 

@@ -8,6 +8,8 @@ import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import Layout from "../../components/Layout";
 import GET_POST_BY_SLUG from "../../graphql/queries/blog/getPostBySlug.gql";
 import BlogPost from "../../components/blog/BlogPost";
+import DIRECTUS_URL from "../../consts/directusBaseUrl";
+import APP_URL from "../../consts/appUrl";
 
 const BlogDetailPage: FunctionComponent = () => {
   const router = useRouter();
@@ -20,6 +22,16 @@ const BlogDetailPage: FunctionComponent = () => {
   const head = () => (
     <Head>
       <title>{post.title}</title>
+      <meta property="og:title" content={post.title} />
+      <meta property="og:description" content={post.subtitle} />
+      <meta
+        property="og:image"
+        content={`${DIRECTUS_URL}/assets/${post.thumbnail.id}`}
+      />
+      <meta property="og:image:width" content={post.thumbnail.width} />
+      <meta property="og:image:height" content={post.thumbnail.height} />
+      <meta property="og:url" content={`${APP_URL}/blog/${post.slug}`} />
+      <meta property="og:type" content="article" />
     </Head>
   );
   return (

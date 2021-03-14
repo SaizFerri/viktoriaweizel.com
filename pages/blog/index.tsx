@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import Layout from "../../components/Layout";
 import { GetServerSideProps } from "next";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";

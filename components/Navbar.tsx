@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import Link from "next/link";
 
 const Navbar: FunctionComponent = () => {
@@ -8,7 +8,7 @@ const Navbar: FunctionComponent = () => {
         <div className="navbar__logo">
           <Link href="/">
             <a>
-              <img src="/images/vk-logo.svg" alt="Logo" />
+              <img src="/images/logo_svg.svg" alt="Logo" />
             </a>
           </Link>
         </div>

@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
 
-  &__header {
-    // height: 250px;
+  &__image {
+    a {
+      display: block;
+    }
   }
 
   &__body {

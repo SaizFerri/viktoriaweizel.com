@@ -3,6 +3,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import Card from "../cards/Card";
+import Image from "../Image";
 
 interface IBlogCardProps {
   thumbnail: Record<string, string | number>;
@@ -19,6 +20,18 @@ const BlogCard: FunctionComponent<IBlogCardProps> = ({
   subtitle,
   slug,
 }) => {
+  const CardImage = () => {
+    return (
+      <Link href={`/blog/${slug}`}>
+        <a>
+          <div className="aspect-ratio-4x3 aspect-ratio--cover">
+            <Image image={thumbnail} alt={"thumbnail.title"} />
+          </div>
+        </a>
+      </Link>
+    );
+  };
+
   const CardBody = () => {
     const formatedDate = format(new Date(createdOn), "dd MMMM yyyy", {
       locale: de,
@@ -49,7 +62,7 @@ const BlogCard: FunctionComponent<IBlogCardProps> = ({
   return (
     <Card
       classNames="blog-card"
-      thumbnail={thumbnail}
+      image={<CardImage />}
       body={<CardBody />}
       footer={<CardFooter />}
     />

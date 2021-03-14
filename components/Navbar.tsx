@@ -8,7 +8,7 @@ const Navbar: FunctionComponent = () => {
         <div className="navbar__logo">
           <Link href="/">
             <a>
-              <img src="/images/vk-logo.svg" alt="Logo" />
+              <img src="/images/logo.png" alt="Logo" />
             </a>
           </Link>
         </div>

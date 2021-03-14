@@ -8,8 +8,7 @@ import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import Layout from "../../components/Layout";
 import GET_POST_BY_SLUG from "../../graphql/queries/blog/getPostBySlug.gql";
 import BlogPost from "../../components/blog/BlogPost";
-import DIRECTUS_URL from "../../consts/directusBaseUrl";
-import APP_URL from "../../consts/appUrl";
+import SEO from "../../components/SEO";
 
 const BlogDetailPage: FunctionComponent = () => {
   const router = useRouter();
@@ -18,29 +17,20 @@ const BlogDetailPage: FunctionComponent = () => {
   });
 
   const [post] = data.items.posts;
+  const seoItem = {
+    title: post.title,
+    description: post.subtitle,
+  };
 
   const head = () => (
     <Head>
       <title>{post.title}</title>
-      <meta name="author" content="Viktoria Weizel" />
-      <meta itemProp="name" content={post.name} />
-      <meta itemProp="description" content={post.description} />
-      <meta
-        itemProp="image"
-        content={`${DIRECTUS_URL}/assets/${post.thumbnail.id}`}
+      <SEO
+        item={seoItem}
+        thumbnail={post.thumbnail}
+        type="article"
+        url={`/blog/${post.slug}`}
       />
-      <meta property="og:title" content={post.title} />
-      <meta property="og:site_name" content={post.title}></meta>
-      <meta property="og:description" content={post.subtitle} />
-      <meta
-        property="og:image"
-        itemProp="image"
-        content={`${DIRECTUS_URL}/assets/${post.thumbnail.id}`}
-      />
-      <meta property="og:image:width" content={post.thumbnail.width} />
-      <meta property="og:image:height" content={post.thumbnail.height} />
-      <meta property="og:url" content={`${APP_URL}/blog/${post.slug}`} />
-      <meta property="og:type" content="article" />
     </Head>
   );
   return (

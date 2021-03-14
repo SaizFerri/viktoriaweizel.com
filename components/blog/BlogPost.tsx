@@ -10,6 +10,7 @@ interface IBlogPostProps {
 
 const BlogPost: FunctionComponent<IBlogPostProps> = ({ post }) => {
   const body = parse(post.body, htmlToReactOptions);
+
   return (
     <article className="blog-post">
       <div className="container">
@@ -19,11 +20,11 @@ const BlogPost: FunctionComponent<IBlogPostProps> = ({ post }) => {
             <h5 className="blog-post__subtitle">{post.subtitle}</h5>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12">
-            <Image image={post.thumbnail} alt={post.title} />
-          </div>
-        </div>
+      </div>
+      <div className="aspect-ratio-16x9 aspect-ratio--cover">
+        <Image image={post.thumbnail} alt={post.title} />
+      </div>
+      <div className="container">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-10 col-xl-8">
             <div className="blog-post__body wysiwyg">{body}</div>

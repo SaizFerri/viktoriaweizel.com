@@ -34,6 +34,7 @@ const SEO: FunctionComponent<SEOProps> = ({
   return (
     <>
       <meta name="author" content="Viktoria Weizel" />
+      <meta name="description" content={item.description} />
       <meta itemProp="name" content={item.title} />
       <meta itemProp="description" content={item.description} />
       {item.tags && item.tags.length && (

@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useQuery } from "@apollo/client";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
@@ -37,7 +37,7 @@ const GalleryPage: FunctionComponent = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
@@ -47,6 +47,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return addApolloState(apolloClient, {
     props: {},
+    revalidate: 1,
   });
 };
 

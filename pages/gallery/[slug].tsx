@@ -1,41 +1,48 @@
 import React, { FunctionComponent } from "react";
 import Head from "next/head";
-import { GetServerSideProps } from "next";
-import { useQuery } from "@apollo/client";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import Layout from "../../components/Layout";
 import Masonry from "../../components/Masonry";
 import Image from "../../components/Image";
 import GET_GALLERY_BY_SLUG from "../../graphql/queries/gallery/getGalleryBySlug.gql";
+import GET_ALL_GALLERY_SLUGS from "../../graphql/queries/gallery/getAllSlugs.gql";
 import SEO from "../../components/SEO";
+import IGalleryItem from "../../interfaces/galleryItem.interface";
+import COLLECTION_STATUS from "../../consts/collectionStatus";
 
-const GalleryItemPage: FunctionComponent = () => {
+interface GalleryItemPageProps {
+  gallery: IGalleryItem;
+}
+
+const GalleryItemPage: FunctionComponent<GalleryItemPageProps> = ({
+  gallery,
+}) => {
   const router = useRouter();
-  const { error, data } = useQuery(GET_GALLERY_BY_SLUG, {
-    variables: { slug: router.query.slug },
-  });
 
-  if (error) {
-    console.log(error);
-    return <h1>Error</h1>;
+  if (!gallery) {
+    return <h1>Not found...</h1>;
   }
 
-  const [item] = data?.items?.gallery;
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
   const seoItem = {
-    title: item.name,
-    description: item.description,
-    tags: item.tags,
+    title: gallery.name,
+    description: gallery.description,
+    tags: gallery.tags,
   };
 
   const head: FunctionComponent = () => (
     <Head>
-      <title>{item.name}</title>
+      <title>{gallery.name}</title>
       <SEO
         item={seoItem}
-        thumbnail={item.thumbnail}
+        thumbnail={gallery.thumbnail}
         type="article"
-        url={`/gallery/${item.slug}`}
+        url={`/gallery/${gallery.slug}`}
       />
     </Head>
   );
@@ -44,10 +51,10 @@ const GalleryItemPage: FunctionComponent = () => {
     <Layout head={head}>
       <div className="container">
         <div className="gallery-page">
-          <h1 className="gallery-page__title">{item.name}</h1>
-          <p className="gallery-page__description">{item.description}</p>
+          <h1 className="gallery-page__title">{gallery.name}</h1>
+          <p className="gallery-page__description">{gallery.description}</p>
           <Masonry withLightbox>
-            {(item.images || []).map(({ image }) => (
+            {(gallery.images || []).map(({ image }) => (
               <Image
                 key={image.id}
                 image={image}
@@ -62,15 +69,37 @@ const GalleryItemPage: FunctionComponent = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();
 
-  await apolloClient.query({
+  const { data } = await apolloClient.query({
+    query: GET_ALL_GALLERY_SLUGS,
+    variables: {
+      status: COLLECTION_STATUS,
+    },
+  });
+
+  return {
+    paths: data.items.gallery.map((gallery) => ({
+      params: { slug: gallery.slug },
+    })),
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const apolloClient = initializeApollo();
+
+  const { data } = await apolloClient.query({
     query: GET_GALLERY_BY_SLUG,
     variables: { slug: params?.slug },
   });
+
   return addApolloState(apolloClient, {
-    props: {},
+    props: {
+      gallery: data.items.gallery[0] || false,
+    },
+    revalidate: 1,
   });
 };
 

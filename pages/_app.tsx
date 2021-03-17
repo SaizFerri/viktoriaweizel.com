@@ -19,7 +19,9 @@ export default function MyApp({ Component, pageProps, cookies }) {
 
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
-      gtag.pageview(url);
+      if (cookieConsented) {
+        gtag.pageview(url);
+      }
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => {

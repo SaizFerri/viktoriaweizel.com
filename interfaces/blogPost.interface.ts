@@ -2,7 +2,12 @@ export default interface IBlogPost {
   title: string;
   subtitle: string;
   date_created: string;
-  thumbnail: Record<string, any>;
+  slug: string;
+  thumbnail: {
+    id: string;
+    width: string;
+    height: string;
+  };
   body: string;
   tags: string[];
 }

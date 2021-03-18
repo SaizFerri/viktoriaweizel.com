@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
@@ -27,25 +26,20 @@ const BlogDetailPage: FunctionComponent<BlogDetailPageProps> = ({ post }) => {
     return <h1>Loading...</h1>;
   }
 
-  // const [post] = data.items.posts;
   const seoItem = {
     title: post.title,
     description: post.subtitle,
   };
 
-  const head = () => (
-    <Head>
-      <title>{post.title}</title>
+  return (
+    <Layout>
       <SEO
+        title={post.title}
         item={seoItem}
         thumbnail={post.thumbnail}
         type="article"
         url={`/blog/${post.slug}`}
       />
-    </Head>
-  );
-  return (
-    <Layout head={head}>
       <BlogPost post={post}></BlogPost>
     </Layout>
   );

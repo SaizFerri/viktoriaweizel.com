@@ -3,9 +3,12 @@ export default interface IGalleryItem {
   sort: number;
   name: string;
   slug: string;
+  description: string;
+  images: Record<string, any>[];
+  tags: string[];
   thumbnail: {
     id: string;
-    width: number;
-    height: number;
+    width: string;
+    height: string;
   };
 }

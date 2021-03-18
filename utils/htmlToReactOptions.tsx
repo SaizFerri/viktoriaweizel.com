@@ -12,7 +12,6 @@ const htmlToReactOptions = {
       node.children.length > 0 &&
       node.children[0].data === "\\separator"
     ) {
-      console.log(node);
       return (
         <div className="separator">
           <span className="separator__item"></span>
@@ -22,6 +21,7 @@ const htmlToReactOptions = {
       );
     }
 
+    // Paragraph after heading
     if (node.type === "tag" && node.tagName === "p") {
       if (headings.includes(node.previousSibling?.previousSibling?.name)) {
         return <p className="p-leading">{domToReact(node.children)}</p>;
@@ -34,6 +34,7 @@ const htmlToReactOptions = {
       }
     }
 
+    // Replace with next image
     if (node.children && node.children.length === 1) {
       if (node.children[0].name === "img") {
         const { attribs } = node.children[0];
@@ -45,6 +46,7 @@ const htmlToReactOptions = {
         });
       }
 
+      // Style iframe
       if (node.children[0].name === "iframe") {
         return (
           <div className="wysiwyg-iframe">{domToReact(node.children)}</div>

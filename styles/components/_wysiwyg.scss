@@ -51,6 +51,10 @@
     font-size: to-rem(map-get($font-sizes, "medium"));
     text-align: center;
 
+    img {
+      background-color: #ececec;
+    }
+
     figcaption {
       display: inline-block;
       margin-top: 0.5rem;

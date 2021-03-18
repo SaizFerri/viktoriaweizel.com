@@ -1,0 +1,7 @@
+query getAllSlugs($status: [String]) {
+  items {
+    posts(filter: { status: { _in: $status } }) {
+      slug
+    }
+  }
+}

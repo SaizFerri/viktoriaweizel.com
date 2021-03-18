@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
@@ -35,20 +34,15 @@ const GalleryItemPage: FunctionComponent<GalleryItemPageProps> = ({
     tags: gallery.tags,
   };
 
-  const head: FunctionComponent = () => (
-    <Head>
-      <title>{gallery.name}</title>
+  return (
+    <Layout>
       <SEO
+        title={gallery.name}
         item={seoItem}
         thumbnail={gallery.thumbnail}
         type="article"
         url={`/gallery/${gallery.slug}`}
       />
-    </Head>
-  );
-
-  return (
-    <Layout head={head}>
       <div className="container">
         <div className="gallery-page">
           <h1 className="gallery-page__title">{gallery.name}</h1>

@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import { GetStaticProps } from "next";
-import Head from "next/head";
 import { useQuery } from "@apollo/client";
 import { initializeApollo, addApolloState } from "../../lib/apolloClient";
 import GalleryList from "../../components/gallery/GalleryList";
@@ -21,15 +20,9 @@ const GalleryPage: FunctionComponent = () => {
     description: "Welcome to my gallery!",
   };
 
-  const head = () => (
-    <Head>
-      <title>{seoItem.title}</title>
-      <SEO item={seoItem} type="website" url="/gallery" />
-    </Head>
-  );
-
   return (
-    <Layout head={head}>
+    <Layout>
+      <SEO title={seoItem.title} item={seoItem} type="website" url="/gallery" />
       <div className="container">
         <GalleryList items={data?.items?.gallery} />
       </div>

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import SEO from "../components/SEO";
@@ -7,17 +6,12 @@ const IndexPage = () => {
   const seoItem = {
     title: "Viktoria Weizel – Travel, Photography & Lifestyle",
     description:
-      "I'm Viktoria Weizel a photographer/nurse/traveler based in Berlin. On this website you can get a glimpse of my travels and life in Berlin through galleries and blog posts. Follow me on instagram @viktoria_weizel",
+      "I'm Viktoria Weizel a photographer/nurse/traveler based in Berlin. Get a glimpse of my travels and life in Berlin through galleries and blog posts. Follow me on instagram @viktoria_weizel",
   };
 
-  const head = () => (
-    <Head>
-      <title>{seoItem.title}</title>
-      <SEO item={seoItem} type="website" url="/" />
-    </Head>
-  );
   return (
-    <Layout head={head}>
+    <Layout>
+      <SEO title={seoItem.title} item={seoItem} type="website" url="/" />
       <div className="container">
         <h1>Viktoria Weizel</h1>
         <p>
@@ -36,16 +30,6 @@ const IndexPage = () => {
 };
 
 export async function getStaticProps() {
-  // const apolloClient = initializeApollo();
-
-  // await apolloClient.query({
-  //   query: GALLERY_QUERY,
-  // });
-
-  // return addApolloState(apolloClient, {
-  //   props: {},
-  //   revalidate: 60,
-  // });
   return { props: {} };
 }
 

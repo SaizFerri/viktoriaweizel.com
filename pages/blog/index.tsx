@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { FunctionComponent } from "react";
 import Layout from "../../components/Layout";
 import { GetStaticProps } from "next";
@@ -21,15 +20,9 @@ const BlogPage: FunctionComponent = () => {
     description: "Welcome to my blog!",
   };
 
-  const head = () => (
-    <Head>
-      <title>{seoItem.title}</title>
-      <SEO item={seoItem} type="website" url="/blog" />
-    </Head>
-  );
-
   return (
-    <Layout head={head}>
+    <Layout>
+      <SEO title={seoItem.title} item={seoItem} type="website" url="/blog" />
       <div className="container">
         <div className="row">
           {(data?.items?.posts || []).map(

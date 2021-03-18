@@ -1,29 +1,16 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { CookieBanner } from "@palmabit/react-cookie-law";
 import { ApolloProvider } from "@apollo/client";
 
 import { useApollo } from "../lib/apolloClient";
-import * as gtag from "../utils/gtag";
+import GoogleTagManager from "../components/GoogleTagManager";
 import "../styles/index.scss";
 
 export default function MyApp({ Component, pageProps }) {
-  const router = useRouter();
   const apolloClient = useApollo(pageProps);
 
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
   return (
-    <>
-      <ApolloProvider client={apolloClient}>
+    <ApolloProvider client={apolloClient}>
+      <GoogleTagManager>
         <Component {...pageProps} />
 
         <CookieBanner
@@ -46,7 +33,7 @@ export default function MyApp({ Component, pageProps }) {
           marketingDefaultChecked={false}
           onAccept={() => {}}
         />
-      </ApolloProvider>
-    </>
+      </GoogleTagManager>
+    </ApolloProvider>
   );
 }

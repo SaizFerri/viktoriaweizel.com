@@ -5,8 +5,11 @@ import SEO from "../components/SEO";
 const IndexPage = () => {
   const seoItem = {
     title: "Viktoria Weizel – Travel, Photography & Lifestyle",
-    description:
-      "I'm Viktoria Weizel a photographer/nurse/traveler based in Berlin. Get a glimpse of my travels and life in Berlin through galleries and blog posts. Follow me on instagram @viktoria_weizel",
+    description: `
+      I'm Viktoria Weizel a photographer/nurse/traveler based in Berlin.
+      Get a glimpse of my travels and life in Berlin through galleries and blog posts.
+      Follow me on instagram @viktoria_weizel
+    `,
   };
 
   return (

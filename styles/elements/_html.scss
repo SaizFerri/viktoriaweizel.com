@@ -1,3 +1,36 @@
+:root,
+:root body.light-theme {
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: color, background-color;
+}
+
+:root body.dark-theme {
+  @include dark-theme-colors;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+  transition-property: color, background-color;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root body.dark-theme {
+    @include dark-theme-colors;
+    transition-timing-function: ease-in-out;
+    transition-duration: 250ms;
+    transition-property: color, background-color;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root,
+  :root body.light-theme {
+    @include light-theme-colors;
+    transition-timing-function: ease-in-out;
+    transition-duration: 250ms;
+    transition-property: color, background-color;
+  }
+}
+
 html {
   box-sizing: border-box;
   font-size: 112.5%; // 18px

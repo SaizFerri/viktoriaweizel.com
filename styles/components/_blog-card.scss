@@ -14,6 +14,12 @@
   }
 
   &__date {
-    color: $dark-grey;
+    color: var(--dark-grey);
+  }
+}
+
+.dark-theme {
+  .blog-card__date {
+    color: #d7d7d7;
   }
 }

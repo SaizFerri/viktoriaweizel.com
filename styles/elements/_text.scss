@@ -1,4 +1,13 @@
 p,
+span,
+small,
+em,
+b,
+strong {
+  color: var(--text-color);
+}
+
+p,
 span {
   font-size: 1rem;
   line-height: 1.5;

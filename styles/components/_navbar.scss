@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0.75rem;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid var(--text-color);
   }
 
   &__logo {
@@ -17,6 +17,9 @@
 
     &-item {
       margin: 0 0.5rem;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
 
       &:last-child {
         margin-right: 0;

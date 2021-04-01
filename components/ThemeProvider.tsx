@@ -1,6 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import ETheme from "../enums/theme.enum";
 
+interface IThemeProvider {
+  theme: ETheme;
+  setTheme: (theme: ETheme) => void;
+}
+
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(ETheme.LIGHT);
 
@@ -23,5 +28,6 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export const ThemeContext = createContext();
-export const useTheme = () => useContext(ThemeContext);
+export const ThemeContext = createContext<Partial<IThemeProvider>>({});
+export const useTheme = (): IThemeProvider =>
+  useContext(ThemeContext) as IThemeProvider;

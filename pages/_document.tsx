@@ -17,7 +17,7 @@ class CustomDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang="de">
         <Head>
           <link
             rel="apple-touch-icon"

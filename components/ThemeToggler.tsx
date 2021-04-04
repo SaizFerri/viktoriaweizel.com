@@ -18,9 +18,9 @@ const ThemeToggler = ({ onToggle }) => {
       />
       <label htmlFor="chooseTheme">
         {theme === ETheme.LIGHT ? (
-          <FaSun />
+          <FaMoon />
         ) : (
-          <FaMoon style={{ color: "var(--white)" }} />
+          <FaSun style={{ color: "var(--white)" }} />
         )}
       </label>
     </>

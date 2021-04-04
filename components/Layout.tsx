@@ -4,15 +4,19 @@ import Footer from "./Footer";
 
 interface ILayoutProps {
   children: ReactChild | ReactChild[];
+  classNames?: string;
 }
 
-const Layout: FunctionComponent<ILayoutProps> = ({ children }) => {
+const Layout: FunctionComponent<ILayoutProps> = ({
+  children,
+  classNames = "",
+}) => {
   return (
     <>
       <header>
         <Navbar />
       </header>
-      <main>{children}</main>
+      <main className={classNames}>{children}</main>
       <Footer />
     </>
   );

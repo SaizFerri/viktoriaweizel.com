@@ -26,6 +26,7 @@ export default function MyApp({ Component, pageProps }) {
               buttonWrapper: {},
               button: {},
             }}
+            policyLink="/privacy-policy"
             managePreferencesButtonText={"Open cookie jar"}
             wholeDomain={true}
             showStatisticsOption={false}

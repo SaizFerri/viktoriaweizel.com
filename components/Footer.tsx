@@ -15,6 +15,12 @@ const Footer: FunctionComponent = () => {
               <small>Impressum</small>
             </a>
           </Link>
+          <small>&nbsp;|&nbsp;</small>
+          <Link href="/privacy-policy">
+            <a>
+              <small>Privacy Policy</small>
+            </a>
+          </Link>
         </div>
         <ul className="footer__social-list">
           <li className="footer__social-list-item">

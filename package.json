@@ -24,6 +24,7 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-responsive-masonry": "^2.1.1",
+    "react-slick": "^0.28.1",
     "sass": "^1.32.8",
     "simple-react-lightbox": "^3.6.3"
   },

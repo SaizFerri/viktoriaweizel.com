@@ -53,6 +53,17 @@ class CustomDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@300;400;700&display=swap"
             rel="stylesheet"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            charset="UTF-8"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+          />
           {process.env.NODE_ENV === "production" && (
             <script
               dangerouslySetInnerHTML={{

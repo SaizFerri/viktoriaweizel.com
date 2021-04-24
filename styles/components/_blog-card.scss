@@ -1,25 +1,33 @@
 .blog-card {
-  &__title {
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: to-rem(30);
+  min-height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: to-rem(30);
+  transition: all 200ms ease-in;
+
+  @include breakpoint-down("md") {
+    min-height: 300px;
+    padding: to-rem(15);
   }
 
-  .card__image {
-    img {
-      transition: all 200ms ease-in;
-    }
-
-    img:hover {
-      transform: scale(1.1);
-    }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
   }
 
   &__date {
-    color: var(--dark-grey);
+    color: var(--grey-4);
+    line-height: 1;
+    margin-bottom: to-rem(5);
   }
-}
 
-.dark-theme {
-  .blog-card__date {
-    color: #d7d7d7;
+  &__title {
+    margin-bottom: to-rem(20);
+    line-height: 1.25;
   }
 }

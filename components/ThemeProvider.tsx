@@ -7,7 +7,7 @@ interface IThemeProvider {
 }
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(ETheme.LIGHT);
+  const [theme, setTheme] = useState(ETheme.DARK);
 
   useEffect(() => {
     const bodyClassList = document.body.classList;

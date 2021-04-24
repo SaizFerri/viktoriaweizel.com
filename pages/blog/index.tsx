@@ -10,6 +10,7 @@ import SEO from "../../components/SEO";
 
 const variables = {
   status: COLLECTION_STATUS,
+  limit: -1,
 };
 
 const BlogPage: FunctionComponent = () => {

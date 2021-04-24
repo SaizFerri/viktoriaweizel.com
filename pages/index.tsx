@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -29,6 +29,7 @@ const IndexPage = ({ postsData, galleryData }) => {
   const { data: posts } = postsData;
   const { data: galleries } = galleryData;
   const { setTheme } = useTheme();
+  const slider = useRef();
 
   const seoItem = {
     title: "Viktoria Weizel – Travel, Photography & Lifestyle",
@@ -39,8 +40,6 @@ const IndexPage = ({ postsData, galleryData }) => {
     `,
   };
 
-  console.log(galleries);
-
   var sliderSettings = {
     dots: false,
     infinite: true,
@@ -50,12 +49,32 @@ const IndexPage = ({ postsData, galleryData }) => {
     arrows: true,
     centerMode: true,
     centerPadding: 0,
+    accessibility: true,
     className: "gallery-teaser-slider",
+    beforeChange: (oldIndex, newIndex) => {
+      const slides = slider?.current?.props.children.length;
+      const activeSlide = document.querySelector('.slick-current');
+      const nextSlideIsFirst = oldIndex === slides - 1;
+      const nextSlideIsLast = oldIndex === 0;
+
+      if (nextSlideIsFirst) {
+        activeSlide.nextElementSibling.classList.add('slick-clone-current');
+      }
+      if (nextSlideIsLast) {
+        activeSlide.previousElementSibling.classList.add('slick-clone-current');
+      }
+    },
+    afterChange: () => {
+      console.log(document.querySelector('.slick-clone-current'));
+      
+    }
   };
 
   useEffect(() => {
     setTheme(ETheme.DARK);
   }, []);
+
+  // console.log(slider?.current)
 
   return (
     <Layout>
@@ -98,7 +117,7 @@ const IndexPage = ({ postsData, galleryData }) => {
             <h2 className="section__title">Galleries</h2>
           </div>
         </div>
-        <Slider {...sliderSettings}>
+        <Slider {...sliderSettings} ref={slider}>
           {(galleries?.items?.gallery || []).map(({ name, thumbnail, slug }) => (
             <div key={slug} className="gallery-teaser-slider__item">
               <div className="aspect-ratio-16x9 aspect-ratio--cover">

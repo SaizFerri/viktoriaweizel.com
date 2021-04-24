@@ -20,9 +20,8 @@
     position: relative;
     height: auto;
     margin: 0 20px;
-    transform: translateX(-100px) translateY(90px) scale(1);
+    transform: translateY(90px);
     transition: transform 300ms linear;
-    transition-delay: 0ms;
 
     &:not(.slick-current) {
       &:after {
@@ -39,22 +38,22 @@
     }
   }
 
-  .slick-current {
-    position: relative;
+  .slick-current,
+  .slick-center.slick-cloned {
     z-index: 1;
     transform: translateY(-20px) scale(1.4);
     transform-origin: center;
-    // margin: 0 150px;
     background-color: var(--bg-color);
     transition: transform 300ms linear;
-    transition-delay: 300ms;
 
     [class*="aspect-ratio"] {
       background-color: transparent;
     }
+  }
 
-    & ~ .slick-slide {
-      transform: translateX(100px) translateY(90px) scale(1);
+  .slick-current {
+    & ~ .slick-slide:not(.slick-center.slick-cloned) {
+      transform: translateY(90px);
     }
   }
 }

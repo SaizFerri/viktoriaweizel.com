@@ -2,21 +2,22 @@
   --bg-color: #ffffff;
   --primary: #52796f;
   --secondary: #555b6e;
-  --dark-grey: #333333;
-  --white: #ffffff;
   --text-color: #1a1a1a;
-  --black: #1a1a1a;
 }
 
 @mixin dark-theme-colors {
   --bg-color: #1a1a1a;
   --primary: #52796f;
   --secondary: #555b6e;
-  --dark-grey: #333333;
-  --white: #ffffff;
   --text-color: #ffffff;
 }
 
 :root {
   @include light-theme-colors;
+  --black: #1a1a1a;
+  --white: #ffffff;
+  --grey-1: #414141;
+  --grey-2: #6c6c6c;
+  --grey-3: #9a9a9a;
+  --grey-4: #cbcbcb;
 }

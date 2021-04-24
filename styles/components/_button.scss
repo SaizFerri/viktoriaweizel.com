@@ -9,11 +9,26 @@
   border: none;
   background-color: var(--primary);
   color: var(--white);
-  padding: 0.5rem 1rem;
+  min-width: 150px;
+  padding: 0.5rem 2rem;
+  text-align: center;
   transition: all 200ms ease;
 
   &:hover {
     text-decoration: none;
     opacity: 0.9;
   }
+}
+
+.button--secondary {
+  @extend .button;
+  background-color: var(--white);
+  color: var(--text-color);
+}
+
+// Inmune to theme change
+.button--white {
+  @extend .button;
+  background-color: var(--white);
+  color: var(--black);
 }

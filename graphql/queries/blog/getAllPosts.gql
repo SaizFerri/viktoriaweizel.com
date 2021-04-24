@@ -1,6 +1,10 @@
-query getAllPosts($status: [String]) {
+query getAllPosts($status: [String], $limit: Int) {
   items {
-    posts(sort: "-date_created", filter: { status: { _in: $status } }) {
+    posts(
+      sort: "-date_created"
+      filter: { status: { _in: $status } }
+      limit: $limit
+    ) {
       id
       title
       subtitle

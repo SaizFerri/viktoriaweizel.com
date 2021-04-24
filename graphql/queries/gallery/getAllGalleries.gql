@@ -1,6 +1,6 @@
-query getAllGalleries($status: [String]) {
+query getAllGalleries($status: [String], $limit: Int) {
   items {
-    gallery(sort: "-date_created", filter: { status: { _in: $status }}) {
+    gallery(sort: "-date_created", filter: { status: { _in: $status }}, limit: $limit) {
       id
       name
       slug

@@ -1,11 +1,19 @@
 .navbar {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  transition: all 400ms ease;
+
+  &.has-background {
+    background-color: var(--bg-color);
+  }
+
   &__content {
     @extend .container;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0.75rem;
-    border-bottom: 1px solid var(--text-color);
   }
 
   &__logo {
@@ -23,6 +31,16 @@
 
       &:last-child {
         margin-right: 0;
+      }
+    }
+  }
+
+  &.ignore-theme {
+    .navbar__menu {
+      &-item {
+        a {
+          color: var(--white);
+        }
       }
     }
   }

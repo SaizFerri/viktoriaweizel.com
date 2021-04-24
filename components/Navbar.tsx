@@ -1,11 +1,16 @@
-import { FunctionComponent } from "react";
+import { useState, useEffect, FunctionComponent } from "react";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 import ETheme from "../enums/theme.enum";
 import ThemeToggler from "./ThemeToggler";
+import { useRouter } from "next/router";
 
 const Navbar: FunctionComponent = () => {
+  const [isNotTop, setIsNotTop] = useState(false);
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+
+  const isHome = router.route === "/";
 
   const changeTheme = (e) => {
     if (e.target.checked) {
@@ -16,15 +21,32 @@ const Navbar: FunctionComponent = () => {
     setTheme(ETheme.LIGHT);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsNotTop(() => true);
+      return;
+    }
+
+    setIsNotTop(() => false)
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isHome ? "ignore-theme" : ""} ${isNotTop ? "has-background" : ""}`}>
       <div className="navbar__content">
         <div className="navbar__logo">
           <Link href="/">
             <a>
               <img
                 src={`${
-                  theme === ETheme.LIGHT
+                  theme === ETheme.LIGHT && !isHome
                     ? "/images/logo.svg"
                     : "/images/logo_nightmode.svg"
                 }`}
@@ -44,9 +66,11 @@ const Navbar: FunctionComponent = () => {
               <a>Blog</a>
             </Link>
           </li>
-          <li className="navbar__menu-item">
-            <ThemeToggler onToggle={changeTheme} />
-          </li>
+          {!isHome && (
+            <li className="navbar__menu-item">
+              <ThemeToggler onToggle={changeTheme} />
+            </li>
+          )}
         </ul>
       </div>
     </nav>

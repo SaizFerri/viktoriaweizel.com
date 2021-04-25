@@ -11,7 +11,7 @@
   transition: all 200ms ease-in;
 
   @include breakpoint-down("md") {
-    min-height: 300px;
+    min-height: 350px;
     padding: to-rem(15);
   }
 

@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import { initializeApollo, addApolloState } from "../lib/apolloClient";
 import GET_ALL_POSTS from "../graphql/queries/blog/getAllPosts.gql";
 import GET_ALL_GALLERIES from "../graphql/queries/gallery/getAllGalleries.gql";
-// import { useQuery } from "@apollo/client";
 import COLLECTION_STATUS from "../consts/collectionStatus";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
@@ -51,23 +50,6 @@ const IndexPage = ({ postsData, galleryData }) => {
     centerPadding: 0,
     accessibility: true,
     className: "gallery-teaser-slider",
-    beforeChange: (oldIndex, newIndex) => {
-      const slides = slider?.current?.props.children.length;
-      const activeSlide = document.querySelector('.slick-current');
-      const nextSlideIsFirst = oldIndex === slides - 1;
-      const nextSlideIsLast = oldIndex === 0;
-
-      if (nextSlideIsFirst) {
-        activeSlide.nextElementSibling.classList.add('slick-clone-current');
-      }
-      if (nextSlideIsLast) {
-        activeSlide.previousElementSibling.classList.add('slick-clone-current');
-      }
-    },
-    afterChange: () => {
-      console.log(document.querySelector('.slick-clone-current'));
-      
-    }
   };
 
   useEffect(() => {
@@ -105,7 +87,7 @@ const IndexPage = ({ postsData, galleryData }) => {
           <div className="row">
             <div className="col-12">
               <Link href="/blog">
-                <a>See all posts -></a>
+                <a>See all posts &#129042;</a>
               </Link>
             </div>
           </div>

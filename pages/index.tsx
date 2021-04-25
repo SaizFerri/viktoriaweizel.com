@@ -45,18 +45,41 @@ const IndexPage = ({ postsData, galleryData }) => {
     speed: 300,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     centerMode: true,
     centerPadding: 0,
     accessibility: true,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    cssEase: "linear",
     className: "gallery-teaser-slider",
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "60px",
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "40px",
+        }
+      },
+    ]
   };
 
   useEffect(() => {
     setTheme(ETheme.DARK);
   }, []);
-
-  // console.log(slider?.current)
 
   return (
     <Layout>

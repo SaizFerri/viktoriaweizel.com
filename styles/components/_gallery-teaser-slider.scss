@@ -3,24 +3,29 @@
     &-title {
       position: absolute;
       bottom: 10px;
-      line-height: 35px;
+      font-size: 30px;
+      line-height: 30px;
       transform: rotate(-90deg);
       transform-origin: 0 100%;
-      left: 45px;
-    }
-  }
+      width: 50%;
+      left: 40px;
 
-  .slick-track {
-    display: flex;
-    align-items: center;
-    height: 500px;
+      @include breakpoint-down("md") {
+        bottom: 10px;
+        font-size: 20px;
+        line-height: 20px;
+        left: 30px;
+      }
+    }
+
+    [class*="aspect-ratio"] {
+      background-color: transparent;
+    }
   }
 
   .slick-slide {
     position: relative;
     height: auto;
-    margin: 0 20px;
-    transform: translateY(90px);
     transition: transform 300ms linear;
 
     &:not(.slick-current) {
@@ -38,22 +43,56 @@
     }
   }
 
-  .slick-current,
-  .slick-center.slick-cloned {
-    z-index: 1;
-    transform: translateY(-20px) scale(1.4);
-    transform-origin: center;
-    background-color: var(--bg-color);
-    transition: transform 300ms linear;
-
-    [class*="aspect-ratio"] {
-      background-color: transparent;
+  @include breakpoint-down("lg") {
+    .slick-slide:not(.slick-center.slick-current) {
+      transform: scale(.9);
+    }
+    
+    .slick-slide.slick-center.slick-cloned {
+      transform: scale(1);
+    }
+    .slick-current {
+      & ~ .slick-slide:not(.slick-center.slick-cloned) {
+        transform: scale(.9);
+      }
     }
   }
 
-  .slick-current {
-    & ~ .slick-slide:not(.slick-center.slick-cloned) {
-      transform: translateY(90px);
+  @include breakpoint-up("lg") {
+    .slick-track {
+      display: flex;
+      align-items: flex-end;
+      height: 35vw;
+    }
+
+  
+    .slick-current,
+    .slick-center.slick-cloned {
+      z-index: 1;
+      transform: translateY(-50%) scale(1.7);
+      transform-origin: center;
+      transition: transform 300ms linear;
+    }
+  }
+
+  @include breakpoint-up("xl") {
+    .slick-track {
+      height: 35vw;
+    }
+
+    .slick-current,
+    .slick-center.slick-cloned {
+      transform: translateY(-50%) scale(1.7);
+    }
+  }
+
+  @include breakpoint-up("xxl") {
+    .slick-current,
+    .slick-center.slick-cloned {
+      transform: translateY(-35%) scale(1.4);
+    }
+    .slick-track {
+      height: 31vw;
     }
   }
 }

@@ -82,7 +82,7 @@ const IndexPage = ({ postsData, galleryData }) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout classNames="no-padding">
       <SEO title={seoItem.title} item={seoItem} type="website" url="/" />
       <Hero />
       <section className="section">

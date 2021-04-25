@@ -9,6 +9,7 @@
       transform-origin: 0 100%;
       width: 50%;
       left: 40px;
+      margin: 0;
 
       @include breakpoint-down("md") {
         bottom: 10px;

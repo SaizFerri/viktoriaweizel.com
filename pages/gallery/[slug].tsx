@@ -74,7 +74,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   return {
-    paths: data.items.gallery.map((gallery) => ({
+    paths: data.gallery.map((gallery) => ({
       params: { slug: gallery.slug },
     })),
     fallback: true,
@@ -91,7 +91,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return addApolloState(apolloClient, {
     props: {
-      gallery: data.items.gallery[0] || false,
+      gallery: data.gallery[0] || false,
     },
     revalidate: 1,
   });

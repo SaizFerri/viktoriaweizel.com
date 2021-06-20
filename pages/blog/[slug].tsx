@@ -56,7 +56,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
 
   return {
-    paths: data.items.posts.map((post) => ({ params: { slug: post.slug } })),
+    paths: data.posts.map((post) => ({ params: { slug: post.slug } })),
     fallback: true,
   };
 };
@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return addApolloState(apolloClient, {
     props: {
-      post: data.items.posts[0] || false,
+      post: data.posts[0] || false,
     },
     revalidate: 1,
   });

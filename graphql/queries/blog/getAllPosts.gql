@@ -1,20 +1,18 @@
 query getAllPosts($status: [String], $limit: Int) {
-  items {
-    posts(
-      sort: "-date_created"
-      filter: { status: { _in: $status } }
-      limit: $limit
-    ) {
+  posts(
+    sort: "-date_created"
+    filter: { status: { _in: $status } }
+    limit: $limit
+  ) {
+    id
+    title
+    subtitle
+    date_created
+    slug
+    thumbnail {
       id
-      title
-      subtitle
-      date_created
-      slug
-      thumbnail {
-        id
-        width
-        height
-      }
+      width
+      height
     }
   }
 }

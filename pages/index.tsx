@@ -13,6 +13,7 @@ import BlogCard from "../components/blog/BlogCard";
 import { useTheme } from "../components/ThemeProvider";
 import ETheme from "../enums/theme.enum";
 import Image from "../components/Image";
+import ArrowRightSmall from "../components/ArrowRightSmall";
 
 const blogVariables = {
   status: COLLECTION_STATUS,
@@ -50,7 +51,7 @@ const IndexPage = ({ postsData, galleryData }) => {
     centerPadding: 0,
     accessibility: true,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 10000,
     pauseOnHover: true,
     pauseOnFocus: true,
     cssEase: "linear",
@@ -63,7 +64,7 @@ const IndexPage = ({ postsData, galleryData }) => {
           slidesToScroll: 1,
           centerMode: true,
           centerPadding: "60px",
-        }
+        },
       },
       {
         breakpoint: 768,
@@ -72,9 +73,9 @@ const IndexPage = ({ postsData, galleryData }) => {
           slidesToScroll: 1,
           centerMode: true,
           centerPadding: "40px",
-        }
+        },
       },
-    ]
+    ],
   };
 
   useEffect(() => {
@@ -91,7 +92,7 @@ const IndexPage = ({ postsData, galleryData }) => {
             <h2 className="section__title">Latest blog posts</h2>
           </div>
           <div className="row">
-            {(posts?.items?.posts || []).map(
+            {(posts?.posts || []).map(
               ({ id, title, subtitle, date_created, thumbnail, slug }) => {
                 return (
                   <div className="col-12 col-md-12 col-lg-6 col-xl-6" key={id}>
@@ -107,10 +108,14 @@ const IndexPage = ({ postsData, galleryData }) => {
               }
             )}
           </div>
+          {/* TODO: refactor this */}
           <div className="row">
             <div className="col-12">
               <Link href="/blog">
-                <a>See all posts &#129042;</a>
+                <a className="d-flex align-items-center">
+                  <span className="mr-1">See all posts</span>
+                  <ArrowRightSmall />
+                </a>
               </Link>
             </div>
           </div>
@@ -123,12 +128,18 @@ const IndexPage = ({ postsData, galleryData }) => {
           </div>
         </div>
         <Slider {...sliderSettings} ref={slider}>
-          {(galleries?.items?.gallery || []).map(({ name, thumbnail, slug }) => (
+          {(galleries?.gallery || []).map(({ name, thumbnail, slug }) => (
             <div key={slug} className="gallery-teaser-slider__item">
-              <div className="aspect-ratio-16x9 aspect-ratio--cover">
-                <Image image={thumbnail} alt={thumbnail.title} />
-                <h3 className="gallery-teaser-slider__item-title">{name}</h3>
-              </div>
+              <Link href={`/gallery/${slug}`}>
+                <a>
+                  <div className="aspect-ratio-16x9 aspect-ratio--cover">
+                    <Image image={thumbnail} alt={thumbnail.title} />
+                    <h3 className="gallery-teaser-slider__item-title">
+                      {name}
+                    </h3>
+                  </div>
+                </a>
+              </Link>
             </div>
           ))}
         </Slider>

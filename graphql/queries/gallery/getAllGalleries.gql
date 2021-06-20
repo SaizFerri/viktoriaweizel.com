@@ -1,14 +1,16 @@
 query getAllGalleries($status: [String], $limit: Int) {
-  items {
-    gallery(sort: "-date_created", filter: { status: { _in: $status }}, limit: $limit) {
+  gallery(
+    sort: "-date_created"
+    filter: { status: { _in: $status } }
+    limit: $limit
+  ) {
+    id
+    name
+    slug
+    thumbnail {
       id
-      name
-      slug
-      thumbnail {
-        id
-        width
-        height
-      }
+      width
+      height
     }
   }
 }

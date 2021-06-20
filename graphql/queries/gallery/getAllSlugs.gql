@@ -1,7 +1,5 @@
 query getAllSlugs($status: [String]) {
-  items {
-    gallery(filter: { status: { _in: $status } }) {
-      slug
-    }
+  gallery(filter: { status: { _in: $status } }) {
+    slug
   }
 }

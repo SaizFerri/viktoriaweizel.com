@@ -25,7 +25,7 @@ const GalleryPage: FunctionComponent = () => {
     <Layout>
       <SEO title={seoItem.title} item={seoItem} type="website" url="/gallery" />
       <div className="container">
-        <GalleryList items={data?.items?.gallery} />
+        <GalleryList items={data?.gallery} />
       </div>
     </Layout>
   );

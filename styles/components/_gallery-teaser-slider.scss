@@ -42,19 +42,33 @@
         transition: all 300ms linear;
       }
     }
+
+    a {
+      display: block;
+    }
+
+    img {
+      transition: all 200ms ease-in;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
   }
 
   @include breakpoint-down("lg") {
     .slick-slide:not(.slick-center.slick-current) {
-      transform: scale(.9);
+      transform: scale(0.9);
     }
-    
+
     .slick-slide.slick-center.slick-cloned {
       transform: scale(1);
     }
     .slick-current {
       & ~ .slick-slide:not(.slick-center.slick-cloned) {
-        transform: scale(.9);
+        transform: scale(0.9);
       }
     }
   }
@@ -66,7 +80,6 @@
       height: 35vw;
     }
 
-  
     .slick-current,
     .slick-center.slick-cloned {
       z-index: 1;

@@ -2,7 +2,7 @@
   "name": "viktoriaweizel.com",
   "version": "0.0.1",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p PORT",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"

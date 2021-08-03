@@ -14,6 +14,8 @@ import { useTheme } from "../components/ThemeProvider";
 import ETheme from "../enums/theme.enum";
 import Image from "../components/Image";
 import ArrowRightSmall from "../components/ArrowRightSmall";
+import sliderSettings from "../consts/galleryTeaserSliderSettings";
+import LinkWithIcon from "../components/LinkWithIcon";
 
 const blogVariables = {
   status: COLLECTION_STATUS,
@@ -38,44 +40,6 @@ const IndexPage = ({ postsData, galleryData }) => {
       Get a glimpse of my travels and life in Berlin through galleries and blog posts.
       Follow me on instagram @viktoria_weizel
     `,
-  };
-
-  var sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    centerMode: true,
-    centerPadding: 0,
-    accessibility: true,
-    autoplay: true,
-    autoplaySpeed: 10000,
-    pauseOnHover: true,
-    pauseOnFocus: true,
-    cssEase: "linear",
-    className: "gallery-teaser-slider",
-    responsive: [
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "60px",
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: "40px",
-        },
-      },
-    ],
   };
 
   useEffect(() => {
@@ -108,15 +72,11 @@ const IndexPage = ({ postsData, galleryData }) => {
               }
             )}
           </div>
-          {/* TODO: refactor this */}
           <div className="row">
             <div className="col-12">
-              <Link href="/blog">
-                <a className="d-flex align-items-center">
-                  <span className="mr-1">See all posts</span>
-                  <ArrowRightSmall />
-                </a>
-              </Link>
+              <LinkWithIcon title="See all posts" href="/blog">
+                <ArrowRightSmall />
+              </LinkWithIcon>
             </div>
           </div>
         </div>
@@ -144,22 +104,6 @@ const IndexPage = ({ postsData, galleryData }) => {
           ))}
         </Slider>
       </section>
-      {/* <section className="section">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-12">
-              <iframe
-                src="https://open.spotify.com/embed/track/01D7nX5t321cgGgehXH0MU"
-                width="100%"
-                height="80"
-                frameBorder="0"
-                allowTransparency={true}
-                allow="encrypted-media"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </Layout>
   );
 };

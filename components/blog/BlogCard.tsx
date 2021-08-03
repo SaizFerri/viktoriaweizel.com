@@ -2,8 +2,7 @@ import { FunctionComponent } from "react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
-import Card from "../cards/Card";
-import Image from "../Image";
+import DIRECTUS_URL from "../../consts/directusBaseUrl";
 
 interface IBlogCardProps {
   thumbnail: Record<string, string | number>;
@@ -20,52 +19,27 @@ const BlogCard: FunctionComponent<IBlogCardProps> = ({
   subtitle,
   slug,
 }) => {
-  const CardImage = () => {
-    return (
-      <Link href={`/blog/${slug}`}>
-        <a>
-          <div className="aspect-ratio-4x3 aspect-ratio--cover">
-            <Image image={thumbnail} alt={"thumbnail.title"} />
-          </div>
-        </a>
-      </Link>
-    );
-  };
-
-  const CardBody = () => {
-    const formatedDate = format(new Date(createdOn), "dd MMMM yyyy", {
-      locale: de,
-    });
-    return (
-      <>
-        <div className="blog-card__title">
-          <Link href={`/blog/${slug}`}>
-            <a className="clean d-block">
-              <h3 className="card__title">{title}</h3>
-            </a>
-          </Link>
-          <small className="blog-card__date">{formatedDate}</small>
-        </div>
-        <p className="card__teaser">{subtitle}</p>
-      </>
-    );
-  };
-
-  const CardFooter = () => (
-    <>
-      <Link href={`/blog/${slug}`}>
-        <a className="button">Read more</a>
-      </Link>
-    </>
-  );
+  const backgroundImage = `
+    linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.62) 49.48%, #1A1A1A 100%),
+    url(${DIRECTUS_URL}/assets/${thumbnail.id})
+  `;
+  const formatedDate = format(new Date(createdOn), "dd MMMM yyyy", {
+    locale: de,
+  });
 
   return (
-    <Card
-      classNames="blog-card"
-      image={<CardImage />}
-      body={<CardBody />}
-      footer={<CardFooter />}
-    />
+    <Link href={`/blog/${slug}`}>
+      <div
+        className="blog-card"
+        style={{
+          backgroundImage: backgroundImage,
+        }}
+      >
+        <small className="blog-card__date">{formatedDate}</small>
+        <h4 className="blog-card__title">{title}</h4>
+        <p className="card__subtitle">{subtitle}</p>
+      </div>
+    </Link>
   );
 };
 

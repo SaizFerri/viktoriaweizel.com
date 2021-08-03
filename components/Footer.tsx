@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import { FaInstagram } from "react-icons/fa";
 
@@ -7,7 +8,20 @@ const Footer: FunctionComponent = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <small>&#169;&nbsp;Copyright {year} Viktoria Weizel</small>
+        <div className="footer__legal">
+          <small>&#169;&nbsp;Copyright {year} Viktoria Weizel&nbsp;| </small>
+          <Link href="/impressum">
+            <a>
+              <small>Impressum</small>
+            </a>
+          </Link>
+          <small>&nbsp;|&nbsp;</small>
+          <Link href="/privacy-policy">
+            <a>
+              <small>Privacy Policy</small>
+            </a>
+          </Link>
+        </div>
         <ul className="footer__social-list">
           <li className="footer__social-list-item">
             <a

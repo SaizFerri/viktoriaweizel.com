@@ -1,6 +1,5 @@
 .footer {
   margin-top: 2rem;
-  background-color: #f6f6f6;
 
   &__content {
     @extend .container;
@@ -8,11 +7,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 1px solid var(--text-color);
+
+    * {
+      color: var(--text-color);
+    }
   }
 
   &__social-list {
     &-item {
       font-size: 1.2rem;
+
+      svg {
+        fill: var(--text-color);
+      }
     }
   }
 }

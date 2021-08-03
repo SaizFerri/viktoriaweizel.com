@@ -34,10 +34,26 @@
     }
   }
 
+  .react-cookie-law-accept-btn {
+    span {
+      color: var(--white);
+    }
+  }
+
   .react-cookie-law-save-btn,
   .react-cookie-law-manage-btn {
     margin-right: 0.5rem;
-    background-color: $white;
-    color: $primary;
+    background-color: var(--white);
+    color: var(--primary);
+  }
+}
+
+.dark-theme {
+  .cookie-banner {
+    a,
+    .react-cookie-law-manage-btn span,
+    .react-cookie-law-save-btn span {
+      color: var(--black);
+    }
   }
 }

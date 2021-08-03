@@ -1,11 +1,12 @@
 .blog-post {
   &__title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     line-height: 1.15;
   }
 
   &__subtitle {
     margin-bottom: 2rem;
+    line-height: 1.75;
   }
 
   &__body {

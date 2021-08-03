@@ -10,6 +10,7 @@ import SEO from "../../components/SEO";
 
 const variables = {
   status: COLLECTION_STATUS,
+  limit: -1,
 };
 
 const BlogPage: FunctionComponent = () => {
@@ -25,7 +26,7 @@ const BlogPage: FunctionComponent = () => {
       <SEO title={seoItem.title} item={seoItem} type="website" url="/blog" />
       <div className="container">
         <div className="row">
-          {(data?.items?.posts || []).map(
+          {(data?.posts || []).map(
             ({ id, title, subtitle, date_created, thumbnail, slug }) => {
               return (
                 <div className="col-12 col-md-6 col-lg-6 col-xl-4" key={id}>

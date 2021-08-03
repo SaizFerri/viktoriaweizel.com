@@ -116,6 +116,7 @@ body {
 
 ol,
 ul {
+  color: var(--text-color);
   list-style: none;
 }
 
@@ -367,7 +368,7 @@ button,
 input,
 select,
 textarea {
-  color: #000;
+  color: var(--text-color);
 }
 
 ::-moz-selection {

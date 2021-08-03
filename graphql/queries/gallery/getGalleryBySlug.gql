@@ -1,24 +1,22 @@
 query getGalleryBySlug($slug: String) {
-  items {
-    gallery(filter: { slug: { _eq: $slug } }) {
+  gallery(filter: { slug: { _eq: $slug } }) {
+    id
+    name
+    description
+    slug
+    thumbnail {
       id
-      name
-      description
-      slug
-      thumbnail {
+      width
+      height
+    }
+    images(filter: { image: { id: { _nnull: true } } }) {
+      image {
         id
+        title
         width
         height
       }
-      images(filter: { image: { id: { _nnull: true } } }) {
-        image {
-          id
-          title
-          width
-          height
-        }
-      }
-      tags
     }
+    tags
   }
 }

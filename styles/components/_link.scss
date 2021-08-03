@@ -1,0 +1,17 @@
+.link {
+  display: flex;
+  align-items: center;
+
+  &.link--icon {
+    .link__title {
+      margin-right: 0.5rem;
+    }
+
+    &:hover {
+      svg {
+        transition: all 200ms ease;
+        transform: translateX(5px);
+      }
+    }
+  }
+}

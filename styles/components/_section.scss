@@ -1,0 +1,11 @@
+.section {
+  margin-top: to-rem(100);
+
+  &__title {
+    margin-bottom: 40px;
+
+    @include breakpoint-up("md") {
+      margin-bottom: 60px;
+    }
+  }
+}

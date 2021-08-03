@@ -1,0 +1,29 @@
+.hero {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(
+      180deg,
+      rgba(26, 26, 26, 0.3) 0.01%,
+      rgba(26, 26, 26, 0.05) 53.12%,
+      #1a1a1a 100%
+    ),
+    url("/images/jungle_me.jpg");
+  background-size: cover;
+  background-position: center;
+
+  &__title,
+  &__subtitle {
+    color: var(--white);
+  }
+
+  &__title {
+    margin-bottom: to-rem(30);
+  }
+
+  &__subtitle {
+    font-weight: 400;
+    margin-bottom: to-rem(40);
+  }
+}

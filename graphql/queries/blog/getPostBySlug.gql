@@ -1,18 +1,16 @@
 query getPostBySlug($slug: String) {
-  items {
-    posts(filter: { slug: { _eq: $slug } }) {
+  posts(filter: { slug: { _eq: $slug } }) {
+    id
+    slug
+    title
+    subtitle
+    date_created
+    thumbnail {
       id
-      slug
-      title
-      subtitle
-      date_created
-      thumbnail {
-        id
-        width
-        height
-      }
-      body
-      tags
+      width
+      height
     }
+    body
+    tags
   }
 }

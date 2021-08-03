@@ -1,7 +1,9 @@
+@use "sass:math";
+
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return math.div($num, $num * 0 + 1);
 }
 
 @function to-rem($value, $base-value: map-get($font-sizes, "base")) {
-  @return strip-unit($value) / strip-unit($base-value) * 1rem;
+  @return math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
 }

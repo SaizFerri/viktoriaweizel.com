@@ -10,6 +10,7 @@ import SEO from "../../components/SEO";
 
 const variables = {
   status: COLLECTION_STATUS,
+  limit: -1,
 };
 
 const GalleryPage: FunctionComponent = () => {
@@ -24,7 +25,7 @@ const GalleryPage: FunctionComponent = () => {
     <Layout>
       <SEO title={seoItem.title} item={seoItem} type="website" url="/gallery" />
       <div className="container">
-        <GalleryList items={data?.items?.gallery} />
+        <GalleryList items={data?.gallery} />
       </div>
     </Layout>
   );

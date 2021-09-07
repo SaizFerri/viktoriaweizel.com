@@ -29,7 +29,7 @@ const BlogPage: FunctionComponent = () => {
           {(data?.posts || []).map(
             ({ id, title, subtitle, date_created, thumbnail, slug }) => {
               return (
-                <div className="col-12 col-md-6 col-lg-6 col-xl-4" key={id}>
+                <div className="col-12 col-md-6 col-lg-6 col-xl-6" key={id}>
                   <BlogCard
                     title={title}
                     createdOn={date_created}

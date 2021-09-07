@@ -81,7 +81,7 @@ const IndexPage = ({ postsData, galleryData }) => {
           </div>
         </div>
       </section>
-      <section className="section">
+      <section className="section mb-5">
         <div className="container">
           <div className="row">
             <h2 className="section__title">Galleries</h2>

@@ -31,3 +31,10 @@
     line-height: 1.25;
   }
 }
+
+.light-theme {
+  .blog-card__title,
+  .card__subtitle {
+    color: var(--white);
+  }
+}

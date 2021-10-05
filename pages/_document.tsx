@@ -46,8 +46,7 @@ class CustomDocument extends Document {
             sizes="16x16"
             href="/favicon/favicon-16x16.png"
           />
-          <link rel="canonical" href={APP_URL} />
-          <meta name="robots" content="index, follow" />
+          <meta name="robots" content="index,follow" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@300;400;700&display=swap"

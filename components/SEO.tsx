@@ -39,6 +39,7 @@ const SEO: FunctionComponent<SEOProps> = ({
       <title>{title}</title>
       <meta name="viewport" content="width=device-width" />
       <meta key="author" name="author" content="Viktoria Weizel" />
+      <link rel="canonical" href={`${APP_URL}${url}`} key="canonical" />
       <meta key="description" name="description" content={item.description} />
       <meta itemProp="name" content={item.title} />
       <meta itemProp="description" content={item.description} />

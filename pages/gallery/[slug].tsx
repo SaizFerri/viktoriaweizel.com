@@ -75,7 +75,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: data.gallery.map((gallery) => ({
-      params: { slug: gallery.slug },
+      params: { slug: gallery.slug || "/not-found" },
     })),
     fallback: true,
   };

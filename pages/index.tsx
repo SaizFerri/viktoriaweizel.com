@@ -104,6 +104,25 @@ const IndexPage = ({ postsData, galleryData }) => {
           ))}
         </Slider>
       </section>
+      <section className="section mb-5">
+        <div className="container">
+          <div className="row">
+            <h2 className="section__title">Newsletter</h2>
+          </div>
+          <div className="row">
+            <div className="display-flex align-items-center">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                id="subscribeEmail"
+                className=" me-2"
+              />
+              <button className="button--white">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };

@@ -10,6 +10,7 @@
   "dependencies": {
     "@apollo/client": "^3.4.3",
     "@apollo/react-hooks": "^4.0.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.71",
     "@palmabit/react-cookie-law": "^0.6.2",
     "apollo-boost": "^0.4.9",
     "bootstrap": "^5.0.2",
